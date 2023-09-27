@@ -35,6 +35,9 @@ def parse_sra(path):
                                 li_experiment['LIBRARY_LAYOUT'] = 'SINGLE'
                     if i.tag == 'INSTRUMENT_MODEL':
                         li_experiment['INSTRUMENT_MODEL'] = i.text
+            # submission info
+            if child.tag == 'SUBMISSION':
+                li_experiment['SUMMARY'] = child.attrib['accession']
             # study info
             if child.tag == 'STUDY':
                 for i in child.iter():
